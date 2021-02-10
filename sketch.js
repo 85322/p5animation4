@@ -1,5 +1,19 @@
 'use strict';
 
+const rain = {
+  x : 2,
+  y : 2,
+  display : () => {
+    ellipse(rain.x, rain.y, 5, 5)
+  },
+  move : () => {
+    rain.y = rain.y - 100;
+  }
+}
+
+let y = 0;
+let speed = -5;
+
 const rectDraw = {
 
   display : () => {
@@ -16,14 +30,29 @@ function setup (){
     textSize(20);
     let ExoBlack = loadFont('assets/Exo-Black.otf');
     textFont(ExoBlack);
+
+
+
   }
   
   function draw(){ 
-    background(0);
+    background(255, 0, 0);
     
-    for (let i = 0; i < 70; i++) {
-      rectDraw.display();
-      
+    rain.display();
+    rain.move();
+
+
+    fill(0, 0, 255);
+    let x = random(0, 400);
+    y = y - speed;
+    rect (x, y, 20, 20);
+    
+    if (y > height) {
+      y = 0;
     }
-  
-  }
+
+
+    // for (let i = 0; i < 70; i++) {
+    //   rectDraw.display();
+    //}
+
