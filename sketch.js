@@ -1,28 +1,27 @@
 'use strict';
 
-const rain = {
-  x : 2,
-  y : 2,
-  display : () => {
-    ellipse(rain.x, rain.y, 5, 5)
-  },
-  move : () => {
-    rain.y = rain.y - 100;
-  }
+class Bubble {
+  constructor(){
+    this.x = Math.floor(random(0, 400));
+    this.y = 0;
+    this.speed = random(-1, -3);
+    this.red = random(0, 255);
+    this.green = random(0, 255);
+    this.blue = random(0, 255);
 }
-
-let y = 0;
-let speed = -5;
-
-const rectDraw = {
-
-  display : () => {
+  move(){
+    
+    this.y = this.y - this.speed;
+  }
+  show(){
     stroke(255);
-    strokeWeight(2);
-    fill(random(0, 255), random(0, 255), random(0, 255));
-    rect(random(0, 400), random(0, 400), random(5, 25), random(5, 25)); 
+    fill(this.red, this.green, this.blue);
+    rect (this.x, this.y - this.speed, 20, 20);
   }
 }
+
+let bubble1;
+let bubble2;
 
 function setup (){
     createCanvas (400, 400); 
@@ -30,32 +29,30 @@ function setup (){
     textSize(20);
     let ExoBlack = loadFont('assets/Exo-Black.otf');
     textFont(ExoBlack);
-
-
-
+    bubble1 = new Bubble();
+    bubble2 = new Bubble();
   }
   
   function draw(){ 
     background(255, 0, 0);
+  
     
-    rain.display();
-    rain.move();
+    print(bubble1.x, bubble1.y);
 
-
-    fill(0, 0, 255);
-    let x = random(0, 400);
-    y = y - speed;
-    rect (x, y, 20, 20);
+    bubble1.move();
+    bubble1.show();
+    bubble2.move();
+    bubble2.show();
     
-    if (y > height) {
-      y = 0;
+    if (bubble1.y > height) {
+      bubble1.y = 0;
+      bubble1.x = random(0, 400);
+      ;
     }
-
-
-
     
-    // for (let i = 0; i < 70; i++) {
-    //   rectDraw.display();
-    //}
+    if (bubble2.y > height) {
+      bubble2.y = 0;
+      bubble2.x = random(0, 400);
+    }
 
   }
