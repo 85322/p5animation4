@@ -52,6 +52,8 @@ function setup (){
     }
 
 
+
+    
     // for (let i = 0; i < 70; i++) {
     //   rectDraw.display();
     //}
