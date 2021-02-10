@@ -4,13 +4,12 @@ class Bubble {
   constructor(){
     this.x = Math.floor(random(0, 400));
     this.y = 0;
-    this.speed = random(-1, -3);
+    this.speed = Math.floor(random(-1, -3));
     this.red = random(0, 255);
     this.green = random(0, 255);
     this.blue = random(0, 255);
 }
   move(){
-    
     this.y = this.y - this.speed;
   }
   show(){
@@ -46,13 +45,13 @@ function setup (){
     
     if (bubble1.y > height) {
       bubble1.y = 0;
-      bubble1.x = random(0, 400);
+      bubble1.x = Math.floor(random(0, 400));
       ;
     }
     
     if (bubble2.y > height) {
       bubble2.y = 0;
-      bubble2.x = random(0, 400);
+      bubble2.x = Math.floor(random(0, 400));
     }
 
   }
