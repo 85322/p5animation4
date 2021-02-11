@@ -2,9 +2,9 @@
 
 class Bubble {
   constructor(r){
-    this.x = Math.floor(random(-100,-200));
+    this.x = random(width, width * -1);
     this.y = -350;
-    this.speed = Math.floor(random(-1, -5));
+    this.speed = random(-1, -5);
     this.red = random(0, 255);
     this.green = random(0, 255);
     this.blue = random(0, 255);
@@ -19,38 +19,34 @@ class Bubble {
     circle (this.x, this.y, this.r*2);
   }
 }
+const bubbles = [];
 
-let bubble1;
-let bubble2;
+
 
 function setup (){
-    createCanvas (500, 450, WEBGL); //WEBGL aendert das coord system in minus-bereich
+    createCanvas (500, 450, WEBGL);
     textSize(25);
     let ExoBlack = loadFont('assets/Exo-Black.otf');
     textFont(ExoBlack);
-    bubble1 = new Bubble(10);
-    bubble2 = new Bubble(5);
+    
+    for (let i = 0; i < 100; i++) {
+      bubbles[i] = new Bubble(random(2, 15));   
+      print(bubbles[i]);
+    }
   }
   
-function draw(){ 
+  function draw(){ 
     background(0, 0, 0);
   
-    print("bubble1.x = " + bubble1.x, "bubble1.y = " + bubble1.y);
-
-    bubble1.move();
-    bubble1.show();
-    bubble2.move();
-    bubble2.show();
-    
-    if (bubble1.y > 200) {
-      bubble1.y = -350;
-      bubble1.x = Math.floor(random(100,-300));      
+    for (let i = 0; i < bubbles.length; i++) {
+    bubbles[i].move();
+    bubbles[i].show();
+  
+    if (bubbles[i].y > 200) {
+      bubbles[i].y = -350;
+      bubbles[i].x = Math.floor(random(250,-250));    
     }
-    
-    if (bubble2.y > 200) {
-      bubble2.y = -350;
-      bubble2.x = Math.floor(random(100,-300));
-    }
+  }
 
     rotateX(millis() / 1000);
     rotateY(millis() / 1000);
