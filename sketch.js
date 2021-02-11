@@ -2,8 +2,8 @@
 
 class Bubble {
   constructor(r){
-    this.x = Math.floor(random(0, 400));
-    this.y = 0;
+    this.x = Math.floor(random(-100,-200));
+    this.y = -350;
     this.speed = Math.floor(random(-1, -5));
     this.red = random(0, 255);
     this.green = random(0, 255);
@@ -24,8 +24,8 @@ let bubble1;
 let bubble2;
 
 function setup (){
-    createCanvas (400, 400); //WEBGL aendert das coord system in minus-bereich
-    textSize(20);
+    createCanvas (500, 450, WEBGL); //WEBGL aendert das coord system in minus-bereich
+    textSize(25);
     let ExoBlack = loadFont('assets/Exo-Black.otf');
     textFont(ExoBlack);
     bubble1 = new Bubble(10);
@@ -42,13 +42,18 @@ function draw(){
     bubble2.move();
     bubble2.show();
     
-    if (bubble1.y >= height) {
-      bubble1.y = 0;
-      bubble1.x = Math.floor(random(0, 400));      
+    if (bubble1.y > 200) {
+      bubble1.y = -350;
+      bubble1.x = Math.floor(random(100,-300));      
     }
     
-    if (bubble2.y > height) {
-      bubble2.y = 0;
-      bubble2.x = Math.floor(random(0, 400));
+    if (bubble2.y > 200) {
+      bubble2.y = -350;
+      bubble2.x = Math.floor(random(100,-300));
     }
+
+    const time = millis();
+    rotateX(millis() / 1000);
+    rotateY(millis() / 1000);
+    text("random \nbubbles", -50, -50);
   }
