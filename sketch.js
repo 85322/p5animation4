@@ -21,8 +21,6 @@ class Bubble {
 }
 const bubbles = [];
 
-
-
 function setup (){
     createCanvas (500, 450, WEBGL);
     textSize(25);
@@ -38,15 +36,16 @@ function setup (){
   function draw(){ 
     background(0, 0, 0);
   
-    for (let i = 0; i < bubbles.length; i++) {
-    bubbles[i].move();
-    bubbles[i].show();
+    bubbles.forEach(bubbles => {
+      bubbles.move();
+      bubbles.show();
+      
   
-    if (bubbles[i].y > 200) {
-      bubbles[i].y = -350;
-      bubbles[i].x = Math.floor(random(250,-250));    
+    if (bubbles.y > 200) {
+      bubbles.y = -350;
+      bubbles.x = Math.floor(random(250,-250));    
     }
-  }
+  });
 
     rotateX(millis() / 1000);
     rotateY(millis() / 1000);
