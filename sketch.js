@@ -16,7 +16,7 @@ class Bubble {
   show(){
     stroke(255);
     fill(this.red, this.green, this.blue);
-    circle (this.x, this.y - this.speed, this.r*2, 20);
+    circle (this.x, this.y, this.r*2);
   }
 }
 
