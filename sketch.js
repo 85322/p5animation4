@@ -52,7 +52,6 @@ function draw(){
       bubble2.x = Math.floor(random(100,-300));
     }
 
-    const time = millis();
     rotateX(millis() / 1000);
     rotateY(millis() / 1000);
     text("random \nbubbles", -50, -50);
