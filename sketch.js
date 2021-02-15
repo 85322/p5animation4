@@ -40,8 +40,7 @@ function setup (){
       bubbles.move();
       bubbles.show();
       
-  
-    if (bubbles.y > 200) {
+    if (bubbles.y > 230) {
       bubbles.y = -350;
       bubbles.x = Math.floor(random(250,-250));    
     }
