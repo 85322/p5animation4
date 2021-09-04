@@ -1,5 +1,5 @@
 # p5animation4
-more animation processing in webgl  
+More animation processing in p5.js & webgl  
 
 Uploaded to https://anon853.github.io/p5animation4/  
 
